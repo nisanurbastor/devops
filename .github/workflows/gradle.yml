@@ -22,7 +22,7 @@ jobs:
 
     # Setup Gradle with the latest version
     - name: Setup Gradle
-      uses: gradle/setup-gradle@v3
+      uses: eskatos/gradle-setup-action@v1 # Burada eylemin gerçek deposunu belirttik.
       with:
         gradle-version: '8.7' # or whatever version you prefer
 
