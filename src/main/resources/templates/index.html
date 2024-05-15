@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <style>
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: solid 1px;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a.button {
+            background-color: #f2f2f2;
+            border: none;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        a.button:hover {
+            background-color: #005f75;
+        }
+
+        .user-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<a href="/adduser" class="button">Add User</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>NAME</th>
+        <th>ADDRESS</th>
+        <th>IMAGE</th>
+        <th>ACTIONS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user:${users}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.address}"></td>
+        <td>
+            <img th:src="@{${user.img_url}}" class="user-image" alt="User Image"/>
+        </td>
+        <td>
+            <a th:href="@{'/updateuser?id=' + ${user.id}}" class="button">Update</a>
+            <a th:href="@{'/deleteuser?id=' + ${user.id}}" class="button">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
